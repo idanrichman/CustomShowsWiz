@@ -14,7 +14,7 @@ Module CustomShowModule
 
         For Each oNamedSlideShow In Globals.ThisAddIn.Application.ActivePresentation.SlideShowSettings.NamedSlideShows
             aShows(i) = oNamedSlideShow
-            i += 1 ''Walla test 2
+            i += 1 ''Walla test 23
         Next
 
         Return aShows
