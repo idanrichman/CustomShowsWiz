@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<customUI xmlns="http://schemas.microsoft.com/office/2009/07/customui" onLoad="Ribbon_Load">
+  <ribbon>
+    <tabs>
+      <tab idMso="TabSlideShow">
+        <group idMso="GroupSlideShowStart" visible="false">
+        </group>
+        
+        <group id="CustomGroupSlideShowStart" label="הפעלת הצגת שקופיות" insertBeforeMso="GroupSlideShowSetup">
+          <button idMso="SlideShowFromBeginning" size="large"/>
+          <button idMso="SlideShowFromCurrent" size="large"/>
+          <separator id="CustomGroupSlideShowStartSeparator" />
+          <button idMso="BroadcastSlideShow" size="large"/>
+          <dynamicMenu id="CustomSlideShowCustomMenu" label="הצגת שקופיות מותאמת אישית"  size="large" imageMso="SlideShowCustomMenu" getContent="GetContent_RibbonCustomShow"/>
+        </group>             
+      </tab>
+    </tabs>
+  </ribbon>
+  
+  <contextMenus>
+    <contextMenu idMso="ContextMenuThumbnail"> 
+      <menuSeparator id="InsertSlidesSeperator1" />
+      <button id="SwapSlidesIDThumbnail" 
+              label="החלף שקפים בתצוגות אישיות..." imageMso ="SmartArtRightToLeft" 
+              onAction="SwapSlides_Callback" getEnabled="SwapSlides_getEnabled"/>
+      <dynamicMenu id="NewShowFromSelectionIDDynamicMenu" 
+            label= "צור הצגה מותאמת אישית" imageMso="SlideShowCustomMenu" 
+            getContent="GetContent_NewShow"/>
+           
+     </contextMenu>
+  </contextMenus>
+</customUI>
+

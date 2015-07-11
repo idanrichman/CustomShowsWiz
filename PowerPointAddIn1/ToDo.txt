@@ -1,0 +1,13 @@
+﻿# insert supertip to buttons in xml
+# implement resource memory release
+# repleace for each loops with for loops (takes alot of memory leaks)
+# make a swap slides function: replace a slide with another slide (e.g new updated slide) in all custom shows
+# check if the "public shared" in the thisaddin.vb is making trouble when 2 instances of powerpoint are opened
+
+#emptycustomshows:
+## resize form according to number of shows.
+
+# new show from selection
+## check if "sections" mess up the slideindex property used for the smartorder feature
+## before adding a new show to pop a window with the list of slides with the option to reverse the order
+
