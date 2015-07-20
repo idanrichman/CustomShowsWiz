@@ -225,6 +225,7 @@
     </Compile>
     <Compile Include="CustomShowModule.vb" />
     <Compile Include="CustomSlideShow.vb" />
+    <Compile Include="CustomSlideShows.vb" />
     <Compile Include="EmptyShowsForm.Designer.vb">
       <DependentUpon>EmptyShowsForm.vb</DependentUpon>
     </Compile>
@@ -296,7 +297,6 @@
       <DependentUpon>WhatsNewForm.vb</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
-    <None Include="ClassDiagram1.cd" />
     <None Include="PowerPointAddin1_1_TemporaryKey.pfx" />
     <None Include="ThisAddIn.Designer.xml">
       <DependentUpon>ThisAddIn.vb</DependentUpon>
