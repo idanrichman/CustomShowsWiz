@@ -7,7 +7,7 @@ Imports System.Windows.Forms
 
 
 Public Class ThisAddIn
-    Private Const WHATS_NEW As Boolean = True '' only if TRUE then the published version should show the whats new box
+    Private Const WHATS_NEW As Boolean = False '' only if TRUE then the published version should show the whats new box.
 
     Private myUserControl1 As MyUserControl
     Private myCustomTaskPane As Microsoft.Office.Tools.CustomTaskPane

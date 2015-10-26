@@ -108,6 +108,27 @@ Public Class Ribbon1
         End Try
     End Function
 
+    Public Sub Jump2Hyperlink_CallBack(control As Office.IRibbonControl)
+        MsgBox("WOW!", vbCritical, Title:="Waw!")
+    End Sub
+
+    Public Function Jump2Hyperlink_getEnabled(control As Office.IRibbonControl)
+
+        'Try
+        '    Dim SldRng As PowerPoint.SlideRange
+
+        '    SldRng = Globals.ThisAddIn.Application.ActiveWindow.Selection.SlideRange
+        '    If SldRng.Count = 2 Then
+        '        Return vbTrue
+        '    Else
+        '        Return vbFalse
+        '    End If
+        'Catch
+        '    Return vbFalse
+        'End Try
+        Return vbTrue
+    End Function
+
 
     Function GetContent_NewShow(control As Office.IRibbonControl) As String
         Dim xml As String

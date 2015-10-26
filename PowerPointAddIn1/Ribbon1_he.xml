@@ -25,9 +25,13 @@
               onAction="SwapSlides_Callback" getEnabled="SwapSlides_getEnabled"/>
       <dynamicMenu id="NewShowFromSelectionIDDynamicMenu" 
             label= "צור הצגה מותאמת אישית" imageMso="SlideShowCustomMenu" 
-            getContent="GetContent_NewShow"/>
-           
-     </contextMenu>
+            getContent="GetContent_NewShow"/>     
+    </contextMenu>
+    <contextMenu idMso="ContextMenuShape">
+      <button id="Jump2HyperlinkContextButton"
+              label="קפוץ להיפרלינק" imageMso="TextBoxNextLinked"
+              onAction="Jump2Hyperlink_Callback" getEnabled="Jump2Hyperlink_getEnabled"/>
+    </contextMenu>   
   </contextMenus>
 </customUI>
 
