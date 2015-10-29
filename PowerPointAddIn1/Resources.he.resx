@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Errormsg_CannotCompleteAction" xml:space="preserve">
+    <value>לא ניתן להשלים את הפעולה</value>
+  </data>
+  <data name="Errormsg_Title" xml:space="preserve">
+    <value>מצטערים, תקלה</value>
+  </data>
   <data name="FirstInstall_Feature_SwapSlides_Desc" xml:space="preserve">
     <value>נאבקים בלעדכן שקף ישן במקום להכניס חדש רק בגלל שהוא כבר מוגדר בכל התצוגות האישיות? מעכשיו אפשר בלחיצה להחליף בתצוגות האישיות כל שקף ישן בשקף חדש.</value>
   </data>

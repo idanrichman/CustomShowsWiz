@@ -29,8 +29,8 @@
      </contextMenu>
     <contextMenu idMso="ContextMenuShape">
       <button id="Jump2HyperlinkContextButton"
-              label="Jump to Hyperlink" imageMso="TextBoxNextLinked"
-              onAction="Jump2Hyperlink_Callback" getEnabled="Jump2Hyperlink_getEnabled"/>
+              label="Jump to Hyperlink" imageMso="TextBoxNextLinked" insertAfterMso="HyperlinkRemove"
+              onAction="Jump2Hyperlink_Callback" getVisible="Jump2Hyperlink_getEnabled"/>
     </contextMenu>
   </contextMenus>
 </customUI>

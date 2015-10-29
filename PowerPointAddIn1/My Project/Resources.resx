@@ -151,4 +151,10 @@
   <data name="SwapSlidesPng" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\SwapSlidesPng.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Errormsg_CannotCompleteAction" xml:space="preserve">
+    <value>Cannot complete action</value>
+  </data>
+  <data name="Errormsg_Title" xml:space="preserve">
+    <value>Error</value>
+  </data>
 </root>

@@ -226,4 +226,59 @@ Module CustomShowModule
 
         End Try
     End Sub
+
+    Public Sub Jump2Hyperlink()
+
+        Dim oPowerpoint As PowerPoint.Application = Globals.ThisAddIn.Application
+        Dim oPresentation As PowerPoint.Presentation = oPowerpoint.ActivePresentation
+        Dim oSlides As PowerPoint.Slides = oPresentation.Slides
+        Dim oWindow As PowerPoint.DocumentWindow = oPowerpoint.ActiveWindow
+        Dim oSelection As PowerPoint.Selection = oWindow.Selection
+        Dim oShape As PowerPoint.Shape
+        Dim oHyper As PowerPoint.Hyperlink
+
+        Try
+
+            oShape = oSelection.ShapeRange(1)
+            oHyper = oShape.ActionSettings(PowerPoint.PpMouseActivation.ppMouseClick).Hyperlink
+
+            '' Assuming that the callback could be called only when an hyperlink exists (otherwise the getEnabled proc. would return False and the callback could be called)
+            If IsNothing(oHyper.SubAddress) Then
+                oHyper = oShape.TextFrame.TextRange.ActionSettings(PowerPoint.PpMouseActivation.ppMouseClick).Hyperlink
+            End If
+
+            Dim sSubaddress As String = oHyper.SubAddress
+            Dim iFirstCommaPos As Integer = GetNthIndex(sSubaddress, ",", 1)
+            Dim iSlideID As Integer = CType(Mid(sSubaddress, 1, iFirstCommaPos), Integer)
+
+            If iSlideID = -1 Then
+                Dim iStartPos As Integer = GetNthIndex(sSubaddress, ",", 2)
+                sSubaddress = Right(sSubaddress, Len(sSubaddress) - iStartPos - 1)
+
+
+                Select Case sSubaddress
+                    Case "NEXT"
+                        Dim iSlideIndex As Integer = oWindow.View.Slide.SlideIndex
+                        If iSlideIndex < oSlides.Count Then iSlideIndex += 1 ' Make sure we're not out of boundries
+                        iSlideID = oSlides(iSlideIndex).SlideID
+                    Case "PREV"
+                        Dim iSlideIndex As Integer = oWindow.View.Slide.SlideIndex
+                        If iSlideIndex > 1 Then iSlideIndex -= 1 ' Make sure we're not out of boundries
+                        iSlideID = oSlides(iSlideIndex).SlideID
+                    Case "LAST"
+                        iSlideID = oSlides(oSlides.Count).SlideID
+                    Case "FIRST"
+                        iSlideID = oSlides(1).SlideID
+                    Case Else
+                        iSlideID = CType(oPresentation.SlideShowSettings.NamedSlideShows(sSubaddress).SlideIDs(1), Integer)
+                End Select
+            End If
+
+            oPowerpoint.ActivePresentation.Slides.FindBySlideID(iSlideID).Select()
+
+        Catch ex As Exception
+            MsgBox(My.Resources.Errormsg_CannotCompleteAction, vbCritical, Title:=My.Resources.Errormsg_Title)
+        End Try
+
+    End Sub
 End Module

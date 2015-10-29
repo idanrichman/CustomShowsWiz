@@ -79,7 +79,6 @@ Public Class Ribbon1
              .RangeType = PowerPoint.PpSlideShowRangeType.ppShowSlideRange '' Returning to default settings. otherwise when pressing the slideshow button it will always run only the last namedslideshow shown
         End Try
 
-
     End Sub
 
     Public Sub FindEmptyShows_CallBack(control As Office.IRibbonControl)
@@ -109,24 +108,33 @@ Public Class Ribbon1
     End Function
 
     Public Sub Jump2Hyperlink_CallBack(control As Office.IRibbonControl)
-        MsgBox("WOW!", vbCritical, Title:="Waw!")
+        Jump2Hyperlink()
     End Sub
 
-    Public Function Jump2Hyperlink_getEnabled(control As Office.IRibbonControl)
+    Public Function Jump2Hyperlink_getVisible(control As Office.IRibbonControl)
 
-        'Try
-        '    Dim SldRng As PowerPoint.SlideRange
+        Try
+            Dim oPowerpoint As PowerPoint.Application = Globals.ThisAddIn.Application
+            Dim oWindow As PowerPoint.DocumentWindow = oPowerpoint.ActiveWindow
+            Dim oSelection As PowerPoint.Selection = oWindow.Selection
+            Dim oShape As PowerPoint.Shape
+            Dim oHyper1 As PowerPoint.Hyperlink
+            Dim oHyper2 As PowerPoint.Hyperlink
 
-        '    SldRng = Globals.ThisAddIn.Application.ActiveWindow.Selection.SlideRange
-        '    If SldRng.Count = 2 Then
-        '        Return vbTrue
-        '    Else
-        '        Return vbFalse
-        '    End If
-        'Catch
-        '    Return vbFalse
-        'End Try
-        Return vbTrue
+
+            oShape = oSelection.ShapeRange(1)
+            oHyper1 = oShape.ActionSettings(PowerPoint.PpMouseActivation.ppMouseClick).Hyperlink
+            oHyper2 = oShape.TextFrame.TextRange.ActionSettings(PowerPoint.PpMouseActivation.ppMouseClick).Hyperlink
+
+            If Not IsNothing(oHyper1.SubAddress) Or Not IsNothing(oHyper2.SubAddress) Then
+                Return vbTrue
+            Else
+                Return vbFalse
+            End If
+        Catch
+            Return vbFalse
+        End Try
+
     End Function
 
 
